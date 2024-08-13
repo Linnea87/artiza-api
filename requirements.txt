@@ -5,6 +5,7 @@ cloudinary==1.41.0
 Django==3.2.25
 django-cloudinary-storage==0.3.0
 idna==3.7
+pillow==10.4.0
 pytz==2024.1
 requests==2.32.3
 six==1.16.0
