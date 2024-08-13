@@ -22,6 +22,7 @@ CLOUDINARY_STORAGE = {
 
 MEDIA_URL = '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -35,7 +36,7 @@ SECRET_KEY = 'django-insecure-hbvi&=&euu(-6-bl117p3da9=tr&(9s+a59r8^xdrwjli&pibd
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['8000-linnea87-artizaapi-ng62e7lgk70.ws.codeinstitute-ide.net', '127.0.0.1']
 
 
 # Application definition
@@ -49,6 +50,7 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
+    'rest_framework',
     'profiles',
 ]
 
