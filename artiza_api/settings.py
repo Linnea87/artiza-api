@@ -36,7 +36,7 @@ SECRET_KEY = 'django-insecure-hbvi&=&euu(-6-bl117p3da9=tr&(9s+a59r8^xdrwjli&pibd
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-linnea87-artizaapi-ng62e7lgk70.ws.codeinstitute-ide.net', '127.0.0.1']
+ALLOWED_HOSTS = ['8000-linnea87-artizaapi-ng62e7lgk70.ws.codeinstitute-ide.net', '127.0.0.1', 'localhost']
 
 
 # Application definition
