@@ -10,6 +10,10 @@ from .serializers import ProfileSerializer
 
 
 class ProfileList(APIView):
+    """
+    List all profiles.
+    No create view as profile creation is handled by django signals.
+    """
     def get(self, request):
         profiles = Profile.objects.all()
         serializer = ProfileSerializer(profiles, many=True, context={'request': request})
@@ -17,6 +21,9 @@ class ProfileList(APIView):
 
 
 class ProfileDetail(APIView):
+    """
+    Retrieve or update a profile if you're the owner.
+    """
     serializer_class = ProfileSerializer
     permission_classes = [IsOwnerOrReadOnly]
 
