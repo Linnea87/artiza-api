@@ -5,6 +5,8 @@
 - [Purpose of the API](#purpose-of-the-api)
 - [Testing](#testing)
     - [Manual Testing](#manual-testing)
+- [Deployment](#deployment)
+    - [JWT tokens](#jwt-tokens)
 
 ## Purpose of the API
 
@@ -35,3 +37,131 @@ All the testing was completed during each step. Going into the framework of the 
 
 ![Profile Testing- 404 error](readmedoc/profile-testing4-error.png)
 
+## Deployment
+### JWT tokens
+The first step of deployment is setting up the JWT tokens:
+
+* First install the package in the terminal window, using the command:
+
+    ```
+    pip install dj-rest-auth
+    ```
+
+* In the settings.py file add the following to the "Installed Apps" section.
+
+    ```
+    'rest_framework.authtoken',
+    'dj_rest_auth',
+    ```
+
+* Next, add the following URLs to the urlpatterns list:
+
+    ```
+    path('dj-rest-auth/', include('dj_rest_auth.urls')),
+    ```
+
+* In the command terminal, migrate the database just added by typing:
+
+    ```
+    python manage.py migrate
+    ```
+
+* Next we want to add the feature to enable the registration of users. Type the following into the terminal:
+
+    ```
+    pip install 'dj-rest-auth[with_social]'
+    ```
+
+* Add the following to the "Installed Apps" section in the settings.py file:
+
+    ```
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'dj_rest_auth.registration',
+    ```
+
+Finally, add JWT tokens functionality:
+
+* Install the djangorestframework-simplejwt package by typing the following into the terminal command window:
+
+    ```
+    pip install djangorestframework-simplejwt
+    ```
+
+* In the env.py file, create a session authentication value (differentiates between Dev and Prod mode):
+
+    ```
+    os.environ['DEV'] = '1'
+    ```
+
+* In the settings.py file, use the Dev value above to differentiate between Dev and Prod Modes & add pagination which is placed under SITE_ID:
+
+    ```
+    REST_FRAMEWORK = {
+        'DEFAULT_AUTHENTICATION_CLASSES': [( 
+            'rest_framework.authentication.SessionAuthentication' 
+            if 'DEV' in os.environ 
+            else 'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
+        )]
+    }
+    ```
+
+* To enable token authentication, put the following under the above step:
+    
+    ```
+    REST_USE_JWT = True
+    ```
+
+* To ensure tokens are sent over HTTPS only, add the following:
+
+    ```
+    JWT_AUTH_SECURE = True
+    ```
+
+* Next, declare cookie names for the access and refresh tokens by adding:
+    
+    ```
+    JWT_AUTH_COOKIE = 'my-app-auth'
+    JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
+    ```
+
+Now we need to add the profile_id and profile_image to fields returned when requesting logged in user’s details:
+
+* Create a new serializers.py file in the api folder. Then import the following files at the top of the new serializers file and create the profile_id and profile_image fields:
+
+    ```
+    from dj_rest_auth.serializers import UserDetailsSerializer
+    from rest_framework import serializers
+
+    class CurrentUserSerializer(UserDetailsSerializer):
+    profile_id = serializers.ReadOnlyField(source='profile.id')
+    profile_image = serializers.ReadOnlyField(source='profile.image.url')
+
+    class Meta(UserDetailsSerializer.Meta):
+        fields = UserDetailsSerializer.Meta.fields + (
+            'profile_id', 'profile_image'
+        )
+    ```
+
+* In settings.py, overwrite the default USER_DETAILS_SERIALIZER, below the JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token' :
+
+    ```
+    REST_AUTH_SERIALIZERS = {'USER_DETAILS_SERIALIZER': 'drf_api.serializers CurrentUserSerializer'}
+    ```
+
+* Next, in the terminal command window:
+
+    1: Run migrations
+
+    ```
+    python manage.py migrate
+    ```
+    2: Update the requirements text file:
+
+    ```
+    pip freeze > requirements.txt
+    ```
+    
+    3: git add, commit and push.
