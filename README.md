@@ -165,3 +165,39 @@ Now we need to add the profile_id and profile_image to fields returned when requ
     ```
     
     3: git add, commit and push.
+
+Bug Fix - dj-rest-auth doesn’t allow users to log out:
+
+* In drf_api/views.py, import JWT_AUTH settings from settings.py
+
+    ```
+    from .settings import (
+    JWT_AUTH_COOKIE, JWT_AUTH_REFRESH_COOKIE, JWT_AUTH_SAMESITE,
+    JWT_AUTH_SECURE,
+    )
+    ```
+
+* Write a logout view. It can be found [here](https://github.com/Linnea87/artiza-api/blob/main/artiza_api/views.py)
+
+* Import the logout view in drf_api/urls.py
+
+    ```
+    from .views import root_route, logout_route
+    ```
+
+* Include it in the urlpatterns list, above the default dj-rest-auth urls, so that it is matched first.
+
+    ```
+    urlpatterns = [
+        path('', root_route),
+        path('admin/', admin.site.urls),
+        path('api-auth/', include('rest_framework.urls')),
+        path('dj-rest-auth/logout/', logout_route),
+        path('dj-rest-auth/', include('dj_rest_auth.urls')),
+        ...
+    ]
+    ```
+
+    Add, Commit and Push your code to GitHub.
+
+
