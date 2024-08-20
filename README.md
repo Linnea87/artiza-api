@@ -148,7 +148,7 @@ Now we need to add the profile_id and profile_image to fields returned when requ
 * In settings.py, overwrite the default USER_DETAILS_SERIALIZER, below the JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token' :
 
     ```
-    REST_AUTH_SERIALIZERS = {'USER_DETAILS_SERIALIZER': 'drf_api.serializers CurrentUserSerializer'}
+    REST_AUTH_SERIALIZERS = {'USER_DETAILS_SERIALIZER': '<your appname>.serializers CurrentUserSerializer'}
     ```
 
 * Next, in the terminal command window:
