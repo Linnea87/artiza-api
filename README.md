@@ -7,6 +7,7 @@
     - [Manual Testing](#manual-testing)
 - [Deployment](#deployment)
     - [JWT tokens](#jwt-tokens)
+    - [Root Route](#root-route)
 
 ## Purpose of the API
 
@@ -168,7 +169,7 @@ Now we need to add the profile_id and profile_image to fields returned when requ
 
 Bug Fix - dj-rest-auth doesn’t allow users to log out:
 
-* In drf_api/views.py, import JWT_AUTH settings from settings.py
+* In the <projectname>_api/views.py, import JWT_AUTH settings from settings.py
 
     ```
     from .settings import (
@@ -179,7 +180,7 @@ Bug Fix - dj-rest-auth doesn’t allow users to log out:
 
 * Write a logout view. It can be found [here](https://github.com/Linnea87/artiza-api/blob/main/artiza_api/views.py)
 
-* Import the logout view in drf_api/urls.py
+* Import the logout view in the <projectname>_api/urls.py
 
     ```
     from .views import root_route, logout_route
@@ -199,5 +200,39 @@ Bug Fix - dj-rest-auth doesn’t allow users to log out:
     ```
 
     Add, Commit and Push your code to GitHub.
+
+### Root Route
+
+* Create a views.py file in the API folder. Set up the imports in the views.py file:
+
+    ```
+    from rest_framework.decorators import api_view
+    from rest_framework.response import Response
+    ```
+
+* Create root route and return custom message:
+
+    ```
+    @api_view()
+    def root_route(request):
+        return Response({"message": "Welcome to my API!"})
+    ```
+
+* In the urls.py file, import:
+
+    ```
+    from .views import root_route
+    ```
+
+* Add the URL to urlpatterns list:
+
+    ```
+    urlpatterns = [
+    path('', root_route)
+    ]
+    ```
+
+* In the root route, no longer displays the 404 Error
+
 
 
