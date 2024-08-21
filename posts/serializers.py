@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from posts.models import Post
 from likes.models import Like
+from categories.models import Category
 
 class PostSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
@@ -10,6 +11,14 @@ class PostSerializer(serializers.ModelSerializer):
     like_id = serializers.SerializerMethodField()
     likes_count = serializers.ReadOnlyField()
     comments_count = serializers.ReadOnlyField()
+    category_name = serializers.ReadOnlyField(source='category.name')
+
+    category = serializers.SlugRelatedField(
+        queryset=Category.objects.all(),
+        slug_field='name',
+        allow_null=True,
+        required=False
+    )
 
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
@@ -38,6 +47,13 @@ class PostSerializer(serializers.ModelSerializer):
             return like.id if like else None
         return None
 
+    def get_category_name(self, obj):
+        """
+        Retrieves the name of the category
+        associated with the post, if any.
+        """
+        return obj.category.name if obj.category else None
+
     class Meta:
         model = Post
         fields = [
@@ -55,4 +71,6 @@ class PostSerializer(serializers.ModelSerializer):
             'like_id',
             'likes_count', 
             'comments_count',
+            'category',
+            'category_name',
         ]
