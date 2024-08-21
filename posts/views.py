@@ -2,7 +2,7 @@ from django.db.models import Count
 from rest_framework import generics, permissions, filters
 from django_filters.rest_framework import DjangoFilterBackend
 from artiza_api.permissions import IsOwnerOrReadOnly
-from .models import Post
+from .models import Post, Category
 from .serializers import PostSerializer
 
 
@@ -26,6 +26,7 @@ class PostList(generics.ListCreateAPIView):
         'owner__followed__owner__profile',
         'likes__owner__profile',
         'owner__profile',
+        'category',
     ]
     search_fields = [
         'owner__username',
@@ -38,7 +39,12 @@ class PostList(generics.ListCreateAPIView):
     ]
 
     def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
+        category_name = self.request.data.get('category', None)
+        if category_name:
+            category = Category.objects.get(name=category_name)
+            serializer.save(owner=self.request.user, category=category)
+        else:
+            serializer.save(owner=self.request.user)
 
 
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
