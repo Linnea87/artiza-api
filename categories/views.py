@@ -1,7 +1,8 @@
 from rest_framework import generics, permissions
 from django_filters.rest_framework import DjangoFilterBackend
+from artiza_api.permissions import IsOwnerOrReadOnly
 from .models import Category
-from .serializers import CategorySerializer
+from .serializers import CategorySerializer, CategoryDetailSerializer
 
 
 class CategoryList(generics.ListAPIView):
@@ -15,3 +16,9 @@ class CategoryList(generics.ListAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['name']
+
+class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    serializer_class = CategoryDetailSerializer
+    queryset = Category.objects.all()
+
