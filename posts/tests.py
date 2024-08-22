@@ -25,6 +25,33 @@ class PostListViewTests(APITestCase):
     def test_user_not_logged_in_cant_create_post(self):
         response = self.client.post('/posts/', {'title': 'a title'})
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+    
+    def test_user_can_search_post_by_username(self):
+        Post.objects.create(
+            owner=User.objects.get(username='adam'),
+            title='Python',
+            )
+        Post.objects.create(
+            owner=User.objects.get(username='adam'),
+            title='Programming',
+            )
+        response = self.client.get('/posts/?search=adam')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['count'], 2)
+    
+    def test_user_can_search_post_by_title(self):
+        Post.objects.create(
+            owner=User.objects.get(username='adam'),
+            title='Python',
+            )
+        Post.objects.create(
+            owner=User.objects.get(username='adam'),
+            title='Programming',
+            )
+        response = self.client.get('/posts/?search=Python')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['count'], 1)
+
 
 class PostDetailViewTests(APITestCase):
     def setUp(self):
@@ -57,3 +84,20 @@ class PostDetailViewTests(APITestCase):
         self.client.login(username='adam', password='pass')
         response = self.client.put('/posts/2/', {'title': 'a new title'})
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+    
+    def test_user_cant_delete_another_users_post(self):
+        self.client.login(username='adam', password='pass')
+        post = Post.objects.create(
+            owner=User.objects.get(username='adam'), title='this is a title'
+            )
+        response = self.client.delete(f'/posts/{post.id}/')
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+    
+    def test_user_can_delete_own_post(self):
+        self.client.login(username='adam', password='pass')
+        post = Post.objects.create(
+            owner=User.objects.get(username='adam'), title='this is a title'
+            )
+        response = self.client.delete(f'/posts/{post.id}/')
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+    
