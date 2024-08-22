@@ -5,6 +5,8 @@ The purpose of the API is to serve as the Back-end for the Front-end of the 5th 
 ## Table of contents
 
 - [Testing](#testing)
+    - [Validators](validators)
+    - [Unit Testing](#unit-testing)
     - [Manual Testing](#manual-testing)
 - [Project Setup](#project-setup)
 - [Deployment](#deployment)
@@ -24,28 +26,27 @@ The purpose of the API is to serve as the Back-end for the Front-end of the 5th 
 
 ## Testing
 
+### Validators
+
+All files passed through [CI Python Linter](https://pep8ci.herokuapp.com/) without error. Minor indentation and whitespace errors were corrected. No errors left.
+
+### Unit Testing
+
+With guidance from the Moments walkthrough, I have created some automated tests, all passing.
+
+* Tests for my Post views can be found here: [Posts view tests](https://github.com/Linnea87/artiza-api/blob/main/posts/tests.py)
+
+* Tests for my Comment views can be found here: [Comments view tests](https://github.com/Linnea87/artiza-api/blob/main/comments/tests.py)
+
+* Tests for my Profile views can be found here: [Profiles view tests](https://github.com/Linnea87/artiza-api/blob/main/profiles/tests.py)
+
+* Tests for my Like views can be found here: [Likes view tests](https://github.com/Linnea87/artiza-api/blob/main/likes/tests.py)
+
+
 ### Manual Testing
 
-All the testing was completed during each step. Going into the framework of the local server and typing in profiles, posts, likes, comments, and followers at the end of the link, as this example; *8000-linnea87-artizaapi-ng62e7lgk70.ws.codeinstitute-ide.net/profiles*
+Testing CRUD throughout the apps
 
-* A list of all profiles is displayed regardless of whether users are logged in or not
-
-
-![Profile Testing- signed out](readmedoc/profile-testing5.png)
-
-![Profile Testing- signed in](readmedoc/profile-testing-1.png)
-
-* When users visit other users' profiles, it says that the visiting user is not the owner of that profile. The CRUD form is also not displayed if the users are not authorized
-
-![Profile Testing- not authorized](readmedoc/profile-testing2.png)
-
-* If the user is the owner of the profile, this is also displayed. As well as the CRUD form is displayed if the user is authorized
-
-![Profile Testing- authorized](readmedoc/profile-testing3.png)
-
-* if users try to access a profile or page that does not exist, a 404 error is displayed
-
-![Profile Testing- 404 error](readmedoc/profile-testing4-error.png)
 
 ## Project Setup
 
