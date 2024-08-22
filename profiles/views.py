@@ -20,7 +20,7 @@ class ProfileList(generics.ListAPIView):
     filter_backends = [
         filters.OrderingFilter,
         DjangoFilterBackend
-    ] 
+    ]
     filterset_fields = [
         'owner__following__followed__profile'
     ]
@@ -31,6 +31,7 @@ class ProfileList(generics.ListAPIView):
         'owner__following__created_at',
         'owner__followed__created_at',
     ]
+
 
 class ProfileDetail(generics.RetrieveUpdateAPIView):
     """

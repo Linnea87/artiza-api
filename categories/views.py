@@ -17,8 +17,8 @@ class CategoryList(generics.ListAPIView):
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['name']
 
+
 class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = CategoryDetailSerializer
     queryset = Category.objects.all()
-

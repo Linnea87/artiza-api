@@ -28,12 +28,12 @@ class LikeListViewTests(APITestCase):
         post = Post.objects.get(title='this is a title')
         response = self.client.post('/likes/', {'post': post.id})
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-    
+
     def test_logged_out_user_cannot_like(self):
         post = Post.objects.get(title='this is a title')
         response = self.client.post('/likes/', {'post': post.id})
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-    
+
     def test_user_cannot_like_same_thing_multiple_times(self):
         self.client.login(username='adam', password='pass')
         post = Post.objects.get(title='this is a title')
@@ -41,6 +41,7 @@ class LikeListViewTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         response = self.client.post('/likes/', {'post': post.id})
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
 
 class LikeDetailViewTests(APITestCase):
     """

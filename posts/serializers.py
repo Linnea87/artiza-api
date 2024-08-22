@@ -3,6 +3,7 @@ from posts.models import Post
 from likes.models import Like
 from categories.models import Category
 
+
 class PostSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
@@ -36,7 +37,6 @@ class PostSerializer(serializers.ModelSerializer):
     def get_is_owner(self, obj):
         request = self.context['request']
         return request.user == obj.owner
-    
 
     def get_like_id(self, obj):
         user = self.context['request'].user
@@ -57,19 +57,19 @@ class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = [
-            'id', 
-            'owner', 
-            'is_owner', 
+            'id',
+            'owner',
+            'is_owner',
             'profile_id',
-            'profile_image', 
+            'profile_image',
             'created_at',
             'updated_at',
-            'title', 
-            'content', 
+            'title',
+            'content',
             'image',
             'image_filter',
             'like_id',
-            'likes_count', 
+            'likes_count',
             'comments_count',
             'category',
             'category_name',
