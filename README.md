@@ -4,6 +4,7 @@
 The purpose of the API is to serve as the Back-end for the Front-end of the 5th project for code institute. This is needed for posting and getting data from endpoints and to perform Create, Read, Update and Delete operations to objects entered by Users via Front-end.
 ## Table of contents
 
+- [User stories](#user-stories)
 - [Testing](#testing)
     - [Validators](validators)
     - [Unit Testing](#unit-testing)
@@ -22,6 +23,10 @@ The purpose of the API is to serve as the Back-end for the Front-end of the 5th 
     - [Project preparation for IDE](#project-preparation-for-ide)
     - [Install package to run the project on Heroku](#install-package-to-run-the-project-on-heroku)
 - [Heroku deployment](#heroku-deployment)
+
+## User stories
+
+I have included User Stories links to the [GitHub Issues](https://github.com/Linnea87/artiza-api/issues) for ARTizas backend API, as well as the [KANBAN Board](https://github.com/users/Linnea87/projects/11).
 
 
 ## Testing
