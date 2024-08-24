@@ -149,7 +149,7 @@ Each title was tested manually and marked with an X for yes if it works, and no 
 |   categories/<int:pk>/ is accessible if not logged in as read only     |   X    |       |
 |   If I am a authenticated user I can    update the categories          |   X    |       |
 |   If I am a authenticated user I can    create categories              |   X    |       |
-|   If I am a authenticated user I can    Delete categories              |        |       |
+|   If I am a authenticated user I can    Delete categories              |   X    |       |
 
 
 ## Project Setup
