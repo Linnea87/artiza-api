@@ -106,6 +106,21 @@ Each title was tested manually and marked with an X for yes if it works, and no 
 |   comments can be deleted by its owner                               |   X    |       |
 
 
+|   Followers                                                           |   Yes  |   No  |
+|-----------------------------------------------------------------------|--------|-------|
+|   Followers/ is accessible if not logged in as read only              |   X    |       |
+|   Followers/<int:pk>/ is accessible if not logged in as read only     |   X    |       |
+|   If I am signed in,I can follow another users profile                |   X    |       |
+|   If I am signed in, I can unfollow a profile I already follow        |   X    |       |
+
+
+|   Categories                                                           |   Yes  |   No  |
+|------------------------------------------------------------------------|--------|-------|
+|   categories/ is accessible if not logged in as read only              |   X    |       |
+|   categories/<int:pk>/ is accessible if not logged in as read only     |   X    |       |
+|   If I am a authenticated user I can    update the categories          |   X    |       |
+|   If I am a authenticated user I can    create categories              |   X    |       |
+|   If I am a authenticated user I can    Delete categories              |        |       |
 
 
 ## Project Setup
