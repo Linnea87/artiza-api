@@ -47,16 +47,64 @@ With guidance from the Moments walkthrough, I have created some automated tests,
 
 Each title was tested manually and marked with an X for yes if it works, and no if it does not.
 
-| Likes | Yes | No |
-| ----------------------------------------------------------- | --- | -- |
-| likes/ is accessible if not logged in as read only                                                                     | X      |      |
-| likes/<int:pk>/ is accessible if not logged in as read only                                                            | X      |      |
-| I can see likes when not logged in                                                                                     | X      |      |
-| If I am signed in, I can add a like to a post                                                                          | X      |      |
-| If I am signed in, I can add a like to a post                                                                          | X      |      |
-| Likes can not be deleted if not logged in as the owner                                                                 | X      |      |
-| Likes can be deleted if logged in as its owner                                                                         | X      |      |
-| I can not like the same thing twice                                                                                    | X      |      |
+|   root_route                                       |   Yes  |   No  |
+|----------------------------------------------------|--------|-------|
+|   The root_route url loads                         |   X    |       |
+|   Welcome message is displayed on landing page     |   X    |       |
+
+
+|   Profiles                                                           |   Yes  |   No  |
+|----------------------------------------------------------------------|--------|-------|
+|   profiles/ is accessible if not logged in as read only              |   X    |       |
+|   profiles/<int:pk>/ is accessible if not logged in as read only     |   X    |       |
+|   profiles/<int:pk>/ is accessible if not logged in as read only     |   X    |       |
+|   Upon registering, a new profile is created for the user            |   X    |       |
+|   As the owner of a profile, I can update it                         |   X    |       |
+|   I can add a profile image                                          |   X    |       |
+|   If I don't own the profile, I can only view it                     |   X    |       |
+
+
+|   Posts                                                                   |   Yes  |   No  |
+|---------------------------------------------------------------------------|--------|-------|
+|   posts/ is accessible if not logged in as read only                      |   X    |       |
+|   posts/<int:pk>/ is accessible if not logged in as read only             |   X    |       |
+|   I can see but not add posts if not logged in                            |   X    |       |
+|   If I am signed in, I can add a post                                     |   X    |       |
+|   Posts can not be edited if not logged in as the owner                   |   X    |       |
+|   Posts can not be deleted if not logged in as its owner                  |   X    |       |
+|   Posts can be edited by its owner                                        |   X    |       |
+|   Posts can be deleted by its owner                                       |   X    |       |
+|   comments_count increments by one when I add a comment to a post         |   X    |       |
+|   likes_count increments by one when I add a like to a post               |   X    |       |
+|   I can upload an image to a post                                         |   X    |       |
+|   File extension must be jpg, jpeg or png when uploading an image         |   X    |       |
+|   If file extension is not jpg, jpeg or png an error informs the user     |   X    |       |
+
+
+|   Likes                                                           |   Yes  |   No  |
+|-------------------------------------------------------------------|--------|-------|
+|   likes/ is accessible if not logged in as read only              |   X    |       |
+|   likes/<int:pk>/ is accessible if not logged in as read only     |   X    |       |
+|   I can see likes when not logged in                              |   X    |       |
+|   If I am signed in, I can add a like to a post                   |   X    |       |
+|   If I am signed in, I can add a like to a post                   |   X    |       |
+|   Likes can not be deleted if not logged in as the owner          |   X    |       |
+|   Likes can be deleted if logged in as its owner                  |   X    |       |
+|   I can not like the same thing twice                             |   X    |       |
+
+
+|   Comments                                                           |   Yes  |   No  |
+|----------------------------------------------------------------------|--------|-------|
+|   comments/ is accessible if not logged in as read only              |   X    |       |
+|   comments/<int:pk>/ is accessible if not logged in as read only     |   X    |       |
+|   I can see likes when not logged in                                 |   X    |       |
+|   Can read, but not create comments if not logged in                 |   X    |       |
+|   If I am signed in, I can create a comment                          |   X    |       |
+|   comments can not be edited if not logged in                        |   X    |       |
+|   comments can not be deleted if not logged in                       |   X    |       |
+|   comments can be edited by its owner                                |   X    |       |
+|   comments can be deleted by its owner                               |   X    |       |
+
 
 
 
