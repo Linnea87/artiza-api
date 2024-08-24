@@ -4,7 +4,7 @@
 
 This is my RESTful API, developed for my frontend React project, ARTiza. This is needed for posting and getting data from endpoints and to perform Create, Read, Update and Delete operations to objects entered by Users via the Front-end.
 
-The API is deployed here: [Artiza API](https://artiza-api-fbf88e8a2da5.herokuapp.com)
+The API is deployed here: [ARTiza API](https://artiza-api-fbf88e8a2da5.herokuapp.com)
 
 And the deployed front-end is here:
 
