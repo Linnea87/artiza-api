@@ -34,7 +34,10 @@ The purpose of the API is to serve as the Back-end for the Front-end of the 5th 
     - [Database Used](#database-used)
     - [Image Storage](#image-storage)
     - [Deployment Service](#deployment-service)
-
+- [Credits](#credits)
+    - [Sources](#sources)
+    - [Media](#media)
+    - [Acknowledgments](#acknowledgments)
 
 ## User stories
 
@@ -763,4 +766,22 @@ I used a PostgreSQL database for this project, at [Elephant SQL](https://www.ele
 #### Deployment Service
 
 [Heroku](https://id.heroku.com/login) was used to deploy the project.
+
+## Credits
+
+### Sources
+
+* I have used The Code Institute Advanced Front-end specialisation Django REST Framework guide, as a basis to create and deploy this API. I also used the Moments walkthrough project as an inspiration and expanded my project with new custom models and functionality;
+
+    * categories app
+
+* As always i have used [Stack Overflow](https://stackoverflow.com) for trouble shooting
+
+### Media
+
+The media for this API consists of the default images, sourced from the API walkthrough and uploaded on Cloudinary.
+
+### Acknowledgments
+
+My mentor at Code Institute - (Martina Terlevic)(https://github.com/SephTheOverwitch) for her invaluable support and insightful feedback during the development of this project.
 
