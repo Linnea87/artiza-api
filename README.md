@@ -1,7 +1,16 @@
 # ARTiza API
 
+![ARTiza](readmedoc/artiza-api.png)
 
-The purpose of the API is to serve as the Back-end for the Front-end of the 5th project for code institute. This is needed for posting and getting data from endpoints and to perform Create, Read, Update and Delete operations to objects entered by Users via Front-end.
+This is my RESTful API, developed for my frontend React project, ARTiza. This is needed for posting and getting data from endpoints and to perform Create, Read, Update and Delete operations to objects entered by Users via the Front-end.
+
+The API is deployed here: [Artiza API](https://artiza-api-fbf88e8a2da5.herokuapp.com)
+
+And the deployed front-end is here:
+
+ARTiza is a versatile app designed to meet the needs of artists of all levels, from beginners to hobbyists and professionals. In the app, users can upload their artwork, receive feedback through likes and comments, and build a creative community by following other artists. ARTiza offers a platform where both inspiration and creativity can flow, while artists can showcase their work and network with like-minded people in the art world.
+
+
 ## Table of contents
 
 - [User stories](#user-stories)
