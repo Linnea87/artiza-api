@@ -45,7 +45,19 @@ With guidance from the Moments walkthrough, I have created some automated tests,
 
 ### Manual Testing
 
-Testing CRUD throughout the apps
+Each title was tested manually and marked with an X for yes if it works, and no if it does not.
+
+| Likes | Yes | No |
+| ----------------------------------------------------------- | --- | -- |
+| likes/ is accessible if not logged in as read only                                                                     | X      |      |
+| likes/<int:pk>/ is accessible if not logged in as read only                                                            | X      |      |
+| I can see likes when not logged in                                                                                     | X      |      |
+| If I am signed in, I can add a like to a post                                                                          | X      |      |
+| If I am signed in, I can add a like to a post                                                                          | X      |      |
+| Likes can not be deleted if not logged in as the owner                                                                 | X      |      |
+| Likes can be deleted if logged in as its owner                                                                         | X      |      |
+| I can not like the same thing twice                                                                                    | X      |      |
+
 
 
 ## Project Setup
