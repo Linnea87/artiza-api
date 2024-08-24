@@ -23,6 +23,18 @@ The purpose of the API is to serve as the Back-end for the Front-end of the 5th 
     - [Project preparation for IDE](#project-preparation-for-ide)
     - [Install package to run the project on Heroku](#install-package-to-run-the-project-on-heroku)
 - [Heroku deployment](#heroku-deployment)
+- [Technologies Used](#technologies-used)
+    - [Languages](#languages)
+    - [Frameworks](#frameworks)
+    - [Libraries](#libraries)
+        - [Authentication](#authentication)
+        - [Database](#database)
+        - [Image Handling](#image-handling)
+        - [Utilities](#utilities)
+    - [Database Used](#database-used)
+    - [Image Storage](#image-storage)
+    - [Deployment Service](#deployment-service)
+
 
 ## User stories
 
@@ -185,6 +197,7 @@ Each title was tested manually and marked with an X for yes if it works, and no 
 * Finally, define a variable called "DEFAULT_FILE_STORAGE" and set it to "MediaCloudinaryStorage".
 
 ## Deployment
+
 ### JWT tokens
 The first step of deployment is setting up the JWT tokens:
 
@@ -445,7 +458,7 @@ Bug Fix - dj-rest-auth doesn’t allow users to log out:
 
 ### Create PostgreSQL Database
 
-* Log in to ElephantSQL.com to access your dashboard
+* Log in to [Elephant SQL](https://www.elephantsql.com) to access your dashboard
 
 * Click “Create New Instance”
 
@@ -668,3 +681,86 @@ This ensures that when you have an environment variable for DEV in your environm
     * Select the Deployment Method (GitHub), select the project repository name from Github, and connect. Next in the Manual deploy section, choose the Master Branch, then click Deploy Branch.
 
 * Once complete, click "Open App" to view
+
+## Technologies Used
+
+### Languages
+
+This api was written using Python.
+
+### Frameworks
+
+* Django
+
+    * The core framework, providing the foundation for this api.
+
+* django-rest-framework
+
+    * A framework building on top of Django, used for creating RESTful APIs.
+
+### Libraries
+
+#### Authentication
+
+* dj-rest-auth
+
+    * Lets django-rest-framework provide authentication endpoints in an easy way.
+
+* django-allauth
+
+    * Comprehensive authentication app for Django.
+
+* djangorestframework-simplejwt
+
+    * JSON Web Token based authentication, which will be used for authentication from the frontend.
+
+#### Database
+
+* dj-database-url
+
+    * Used to help parse urls for easy configuration in Django.
+
+* psycopg2
+
+    * A PostgreSQL adapter for Python.
+
+#### Image Handling
+
+* cloudinary
+
+    * Used to interact with Cloudinary, cloud based image storage.
+
+* django-cloudinary-storage
+
+    * Integrates Cloudinary to be able to use it as storage for media in Django.
+
+* Pillow
+
+    * Used for image processing.
+
+#### Utilities
+
+* gunicorn
+
+    * A WSGI server used in production, needed for deployment.
+
+* django-cors-headers
+
+    * Adds Cross-Origin Resource Sharing headers. Used to allow requests to a Django application from other origins.
+
+* django-taggit
+
+    * Used for adding tags to Posts in this project, makes it easier for users to search content.
+
+#### Database Used
+
+I used a PostgreSQL database for this project, at [Elephant SQL](https://www.elephantsql.com).
+
+#### Image Storage
+
+[Cloudinary](https://cloudinary.com) was used for image storage.
+
+#### Deployment Service
+
+[Heroku](https://id.heroku.com/login) was used to deploy the project.
+
