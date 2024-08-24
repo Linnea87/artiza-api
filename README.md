@@ -783,5 +783,5 @@ The media for this API consists of the default images, sourced from the API walk
 
 ### Acknowledgments
 
-My mentor at Code Institute - (Martina Terlevic)(https://github.com/SephTheOverwitch) for her invaluable support and insightful feedback during the development of this project.
+My mentor at Code Institute - [Martina Terlevic](https://github.com/SephTheOverwitch) for her invaluable support and insightful feedback during the development of this project.
 
