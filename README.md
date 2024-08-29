@@ -697,7 +697,7 @@ This ensures that when you have an environment variable for DEV in your environm
 
 ### Cloning and Forking
 
-If you want to clone or fork this project, you can do it from my [GitHub repository](https://github.com/Linnea87/artiza-api))
+If you want to clone or fork this project, you can do it from my [GitHub repository](https://github.com/Linnea87/artiza-api)
 
 Setting up a virtual environment is recommended first.
 
