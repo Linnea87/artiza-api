@@ -4,7 +4,7 @@
 
 This is my RESTful API, developed for my frontend React project, ARTiza. This is needed for posting and getting data from endpoints and to perform Create, Read, Update and Delete operations to objects entered by Users via the Front-end.
 
-The API is deployed here: [Artiza API](https://artiza-api-fbf88e8a2da5.herokuapp.com)
+The API is deployed here: [ARTiza API](https://artiza-api-fbf88e8a2da5.herokuapp.com)
 
 And the deployed front-end is here:
 
@@ -31,7 +31,7 @@ ARTiza is a versatile app designed to meet the needs of artists of all levels, f
     - [Create Heroku App](#create-heroku-app)
     - [Project preparation for IDE](#project-preparation-for-ide)
     - [Install package to run the project on Heroku](#install-package-to-run-the-project-on-heroku)
-- [Heroku deployment](#heroku-deployment)
+    - [Heroku deployment](#heroku-deployment)
 - [Technologies Used](#technologies-used)
     - [Languages](#languages)
     - [Frameworks](#frameworks)
@@ -43,6 +43,7 @@ ARTiza is a versatile app designed to meet the needs of artists of all levels, f
     - [Database Used](#database-used)
     - [Image Storage](#image-storage)
     - [Deployment Service](#deployment-service)
+    - [Cloning and Forking](#cloning-and-forking)
 - [Credits](#credits)
     - [Sources](#sources)
     - [Media](#media)
@@ -149,7 +150,7 @@ Each title was tested manually and marked with an X for yes if it works, and no 
 |   categories/<int:pk>/ is accessible if not logged in as read only     |   X    |       |
 |   If I am a authenticated user I can    update the categories          |   X    |       |
 |   If I am a authenticated user I can    create categories              |   X    |       |
-|   If I am a authenticated user I can    Delete categories              |        |       |
+|   If I am a authenticated user I can    Delete categories              |   X    |       |
 
 
 ## Project Setup
@@ -678,7 +679,7 @@ This ensures that when you have an environment variable for DEV in your environm
 
 * Add, commit and push your code to GitHub
 
-## Heroku deployment
+### Heroku deployment
 
 * In Heroku - Add your config vars i.e. copy and paste values from env.py into Heroku Config Vars, and add the DISABLE_COLLECTSTATIC var:
 
@@ -693,6 +694,28 @@ This ensures that when you have an environment variable for DEV in your environm
     * Select the Deployment Method (GitHub), select the project repository name from Github, and connect. Next in the Manual deploy section, choose the Master Branch, then click Deploy Branch.
 
 * Once complete, click "Open App" to view
+
+### Cloning and Forking
+
+If you want to clone or fork this project, you can do it from my [GitHub repository](https://github.com/Linnea87/artiza-api)
+
+Setting up a virtual environment is recommended first.
+
+Cloning the project means you are creating a local copy of the project on your own machine.
+
+**This enables** you to make changes without affecting the original repository.
+
+**Forking** it means you are creating a copy of the project on your own GitHub account,
+
+which gives you the ability to propose changes to the original project,
+
+or just developing your own modified version of it.
+
+Then you will need to reinstall the dependencies in the requirements.txt file using this command:
+
+* ``pip install -r requirements.txt``
+
+You will also need to set up your own environment variables
 
 ## Technologies Used
 
