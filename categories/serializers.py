@@ -3,15 +3,16 @@ from .models import Category
 
 
 class CategorySerializer(serializers.ModelSerializer):
+    posts_count = serializers.SerializerMethodField()
+ 
+    def get_posts_count(self, obj):
+        return obj.post_set.count()
 
     class Meta:
         model = Category
-        fields = ['id', 'name', 'created_at']
-
-
-class CategoryDetailSerializer(CategorySerializer):
-    category_id = serializers.ReadOnlyField(source='id')
-
-    class Meta:
-        model = Category
-        fields = ['id', 'name', 'created_at', 'category_id']
+        fields = [
+            'id', 
+            'name', 
+            'created_at', 
+            'posts_count'
+        ]

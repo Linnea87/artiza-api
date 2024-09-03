@@ -1,24 +1,28 @@
-from django_filters.rest_framework import DjangoFilterBackend
-from artiza_api.permissions import IsOwnerOrReadOnly
-from rest_framework import generics, permissions
+from django.db.models import Count
+from rest_framework import generics, filters
 from .models import Category
-from .serializers import CategorySerializer, CategoryDetailSerializer
+from .serializers import CategorySerializer
 
 
-class CategoryList(generics.ListAPIView):
+class CategoryList(generics.ListCreateAPIView):
     """
     API view to list all categories.
 
     Allows filtering by name.
     """
-    queryset = Category.objects.all()
+    queryset = Category.objects.annotate(
+        posts_count=Count('post', distinct=True)
+    ).order_by('-posts_count')
+    filter_backends = [
+        filters.OrderingFilter
+    ]
+    ordering_fields = [
+        'posts_count',
+    ]
     serializer_class = CategorySerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['name']
 
-
-class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    serializer_class = CategoryDetailSerializer
-    queryset = Category.objects.all()
+class CategoryDetail(generics.RetrieveAPIView):
+    serializer_class = CategorySerializer
+    queryset = Category.objects.annotate(
+        posts_count=Count('post', distinct=True)
+    ).order_by('-posts_count')
