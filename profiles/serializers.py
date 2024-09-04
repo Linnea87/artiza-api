@@ -13,12 +13,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     following_count = serializers.ReadOnlyField()
 
 
-    category = serializers.SlugRelatedField(
-        queryset=Category.objects.all(),
-        slug_field='name',
-        allow_null=True,
-        required=False
-    )
+   
 
     def validate_image(self, value):
         # 2MB
