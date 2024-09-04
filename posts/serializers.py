@@ -47,12 +47,12 @@ class PostSerializer(serializers.ModelSerializer):
             return like.id if like else None
         return None
 
-    # def get_category_name(self, obj):
-    #     """
-    #     Retrieves the name of the category
-    #     associated with the post, if any.
-    #     """
-    #     return obj.category.name if obj.category else None
+    def get_category_name(self, obj):
+        """
+        Retrieves the name of the category
+        associated with the post, if any.
+        """
+        return obj.category.name if obj.category else None
 
     class Meta:
         model = Post
