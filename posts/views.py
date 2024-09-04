@@ -8,6 +8,7 @@ from artiza_api.permissions import IsOwnerOrReadOnly
 
 
 
+
 class PostList(generics.ListCreateAPIView):
     """
     List posts or create a post if logged in
@@ -29,10 +30,12 @@ class PostList(generics.ListCreateAPIView):
         'likes__owner__profile',
         'owner__profile',
         'category_id',
+      
     ]
     search_fields = [
         'owner__username',
         'title',
+        'content'
     ]
     ordering_fields = [
         'likes_count',
@@ -41,20 +44,15 @@ class PostList(generics.ListCreateAPIView):
     ]
 
     def perform_create(self, serializer):
-        # category_name = self.request.data.get('category', None)
-        # if category_name:
-        #     category = Category.objects.get(name=category_name)
-        #     serializer.save(owner=self.request.user, category=category)
-        # else:
-            serializer.save(owner=self.request.user)
+        serializer.save(owner=self.request.user)
 
 
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     Retrieve a post and edit or delete it if you own it.
     """
-    serializer_class = PostSerializer
     permission_classes = [IsOwnerOrReadOnly]
+    serializer_class = PostSerializer
     queryset = Post.objects.annotate(
         likes_count=Count('likes', distinct=True),
         comments_count=Count('comment', distinct=True)

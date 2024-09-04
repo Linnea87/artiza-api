@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Profile
 from followers.models import Follower
+from categories.models import Category
 
 
 class ProfileSerializer(serializers.ModelSerializer):
@@ -10,6 +11,14 @@ class ProfileSerializer(serializers.ModelSerializer):
     posts_count = serializers.ReadOnlyField()
     followers_count = serializers.ReadOnlyField()
     following_count = serializers.ReadOnlyField()
+
+
+    category = serializers.SlugRelatedField(
+        queryset=Category.objects.all(),
+        slug_field='name',
+        allow_null=True,
+        required=False
+    )
 
     def validate_image(self, value):
         # 2MB

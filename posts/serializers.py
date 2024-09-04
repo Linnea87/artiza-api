@@ -14,13 +14,6 @@ class PostSerializer(serializers.ModelSerializer):
     comments_count = serializers.ReadOnlyField()
     category_name = serializers.ReadOnlyField(source='category.name')
 
-    category = serializers.SlugRelatedField(
-        queryset=Category.objects.all(),
-        slug_field='name',
-        allow_null=True,
-        required=False
-    )
-
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
             raise serializers.ValidationError('Image size larger than 2MB!')
@@ -47,12 +40,6 @@ class PostSerializer(serializers.ModelSerializer):
             return like.id if like else None
         return None
 
-    def get_category_name(self, obj):
-        """
-        Retrieves the name of the category
-        associated with the post, if any.
-        """
-        return obj.category.name if obj.category else None
 
     class Meta:
         model = Post
