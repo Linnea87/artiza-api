@@ -9,6 +9,8 @@ from categories.models import Category
 class PostSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
+    category = serializers.PrimaryKeyRelatedField(
+        queryset=Category.objects.all())
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
     like_id = serializers.SerializerMethodField()
