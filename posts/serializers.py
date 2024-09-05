@@ -4,8 +4,13 @@ from likes.models import Like
 from categories.models import Category
 
 
+
+
 class PostSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
+    category = serializers.PrimaryKeyRelatedField(
+        queryset= Category.objects.all(),
+    )
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
@@ -13,6 +18,9 @@ class PostSerializer(serializers.ModelSerializer):
     likes_count = serializers.ReadOnlyField()
     comments_count = serializers.ReadOnlyField()
     category_name = serializers.ReadOnlyField(source='category.name')
+
+
+
 
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
@@ -40,6 +48,8 @@ class PostSerializer(serializers.ModelSerializer):
             return like.id if like else None
         return None
 
+      
+
 
     class Meta:
         model = Post
@@ -54,10 +64,9 @@ class PostSerializer(serializers.ModelSerializer):
             'title',
             'content',
             'image',
-            'image_filter',
             'like_id',
             'likes_count',
             'comments_count',
             'category',
-            'category_name',
+            'category_name'       
         ]

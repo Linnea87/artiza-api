@@ -14,6 +14,7 @@ from pathlib import Path
 import os
 import re
 import dj_database_url
+import datetime
 
 if os.path.exists('env.py'):
     import env
@@ -55,6 +56,10 @@ REST_AUTH_SERIALIZERS = {
     'USER_DETAILS_SERIALIZER': 'artiza_api.serializers.CurrentUserSerializer'
 }
 
+JWT_AUTH = {
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=2),
+}
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -64,7 +69,7 @@ REST_AUTH_SERIALIZERS = {
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'False'
+DEBUG = 'DEBUG' in os.environ
 
 ALLOWED_HOSTS = [
     os.environ.get('ALLOWED_HOST'),
@@ -118,13 +123,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-if 'CLIENT_ORIGIN' in os.environ:
-    CORS_ALLOWED_ORIGINS = [
-        os.environ.get('CLIENT_ORIGIN')
-    ]
-if 'CLIENT_ORIGIN_DEV' in os.environ:
-    extracted_url = re.match(r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0) 
-    CORS_ALLOWED_ORIGIN_REGEXES = [r"^https://.*\.codeinstitute-ide\.net$",]
+
+CORS_ALLOWED_ORIGINS = [
+    os.environ.get('CLIENT_ORIGIN')
+]
+
 
 CORS_ALLOW_CREDENTIALS = True
 
@@ -185,6 +188,11 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# prevents CSRF errors
+CSRF_TRUSTED_ORIGINS = [
+    'https://8000-linnea87-artizaapi-ng62e7lgk70.ws.codeinstitute-ide.net'
+    ]
 
 
 # Internationalization
