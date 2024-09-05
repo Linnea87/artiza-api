@@ -8,12 +8,9 @@ class ProfileSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     following_id = serializers.SerializerMethodField()
-    post_count = serializers.ReadOnlyField()
+    posts_count = serializers.ReadOnlyField()
     followers_count = serializers.ReadOnlyField()
     following_count = serializers.ReadOnlyField()
-
-
-   
 
     def validate_image(self, value):
         # 2MB
@@ -57,7 +54,7 @@ class ProfileSerializer(serializers.ModelSerializer):
             'image',
             'is_owner',
             'following_id',
-            'post_count',
+            'posts_count',
             'followers_count',
             'following_count',
         ]

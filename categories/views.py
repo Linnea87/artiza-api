@@ -15,7 +15,7 @@ class CategoryList(generics.ListCreateAPIView):
     serializer_class = CategorySerializer
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Category.objects.annotate(
-        post_count = Count('post', distinct=True),
+        posts_count = Count('post', distinct=True),
     )
     filter_backends = [
         filters.OrderingFilter,
@@ -28,12 +28,12 @@ class CategoryList(generics.ListCreateAPIView):
     ]
    
     search_fields = [
-        'post__title'
+        'posts__title'
         
     ]
 
     ordering_fields = [
-        'post_count',
+        'posts_count',
     ]
 
 
@@ -41,6 +41,5 @@ class CategoryDetail(generics.RetrieveDestroyAPIView):
     serializer_class = CategorySerializer
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Category.objects.annotate(
-        post_count=Count('post', distinct=True)
-
+        posts_count=Count('post', distinct=True)
     )

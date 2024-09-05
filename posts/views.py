@@ -1,10 +1,11 @@
 from django.db.models import Count
-from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics, permissions, filters
+from django_filters.rest_framework import DjangoFilterBackend
+from artiza_api.permissions import IsOwnerOrReadOnly
 from .models import Post
 from categories.models import Category
 from .serializers import PostSerializer
-from artiza_api.permissions import IsOwnerOrReadOnly
+
 
 
 class PostList(generics.ListCreateAPIView):
@@ -25,10 +26,9 @@ class PostList(generics.ListCreateAPIView):
         DjangoFilterBackend,
     ]
     filterset_fields = [
-        'owner__username',
+        'owner__profile',
         'owner__followed__owner__profile',
         'likes__owner__profile',
-        'owner__profile',
         'category',        
     ]
     search_fields = [

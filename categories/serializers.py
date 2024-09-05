@@ -3,10 +3,10 @@ from .models import Category
 
 
 class CategorySerializer(serializers.ModelSerializer):
-    post_count = serializers.ReadOnlyField()
+    posts_count = serializers.ReadOnlyField()
 
     
-    def get_post_count(self, obj):
+    def get_posts_count(self, obj):
         return obj.post_set.count()
 
     class Meta:
@@ -15,7 +15,7 @@ class CategorySerializer(serializers.ModelSerializer):
             'id',
             'name', 
             'created_at', 
-            'post_count',        
+            'posts_count',        
         ]
 
 
