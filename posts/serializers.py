@@ -42,13 +42,9 @@ class PostSerializer(serializers.ModelSerializer):
             return like.id if like else None
         return None
 
-    def get_category_name(self, obj):
-        """
-        Retrieves the name of the category
-        associated with the post, if any.
-        """
-        return obj.category.name if obj.category else None
-
+    def perform_create(self, serializer):
+        # Post creation, associates owner with current user
+        serializer.save(owner=self.request.user)
 
     class Meta:
         model = Post
