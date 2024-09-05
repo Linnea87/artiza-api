@@ -34,7 +34,7 @@ class PostList(generics.ListCreateAPIView):
     search_fields = [
         'owner__username',
         'title',
-        'content'
+        'content',
     ]
     ordering_fields = [
         'likes_count',
@@ -43,13 +43,11 @@ class PostList(generics.ListCreateAPIView):
     ]
 
     def perform_create(self, serializer):
+        # Post creation, associates owner with current user
         serializer.save(owner=self.request.user)
-
+ 
 
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
-    """
-    Retrieve a post and edit or delete it if you own it.
-    """
     serializer_class = PostSerializer
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Post.objects.annotate(
