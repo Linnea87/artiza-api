@@ -14,7 +14,6 @@ from pathlib import Path
 import os
 import re
 import dj_database_url
-import datetime
 
 if os.path.exists('env.py'):
     import env
@@ -56,9 +55,7 @@ REST_AUTH_SERIALIZERS = {
     'USER_DETAILS_SERIALIZER': 'artiza_api.serializers.CurrentUserSerializer'
 }
 
-JWT_AUTH = {
-    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=2),
-}
+
 
 
 
@@ -217,6 +214,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
 
 
 
