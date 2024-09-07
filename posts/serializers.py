@@ -47,19 +47,21 @@ class PostSerializer(serializers.ModelSerializer):
             return like.id if like else None
         return None
 
-    # def perform_create(self, serializer):
-    #     # Post creation, associates owner with current user
-    #     serializer.save(owner=self.request.user)
-
+    
     def get_bookmarks_id(self, obj):
         # check if user saved the post
         user = self.context['request'].user
         if user.is_authenticated:
-            bookmark = Bookmark.objects.filter(
+            bookmarks = Bookmark.objects.filter(
                 owner=user, post=obj
             ).first()
-            return bookmark.id if bookmark else None
+            return bookmarks.id if bookmarks else None
         return None
+    
+    def perform_create(self, serializer):
+        # Post creation, associates owner with current user
+        serializer.save(owner=self.request.user)
+
 
     class Meta:
         model = Post
