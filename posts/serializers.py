@@ -18,7 +18,7 @@ class PostSerializer(serializers.ModelSerializer):
     likes_count = serializers.ReadOnlyField()
     comments_count = serializers.ReadOnlyField()
     category_name = serializers.ReadOnlyField(source='category.name')
-    bookmarks_id = serializers.SerializerMethodField()
+    bookmark_id = serializers.SerializerMethodField()
     bookmarks_count = serializers.ReadOnlyField()
 
     def validate_image(self, value):
@@ -48,14 +48,14 @@ class PostSerializer(serializers.ModelSerializer):
         return None
 
     
-    def get_bookmarks_id(self, obj):
+    def get_bookmark_id(self, obj):
         # check if user saved the post
         user = self.context['request'].user
         if user.is_authenticated:
-            bookmarks = Bookmark.objects.filter(
+            bookmark = Bookmark.objects.filter(
                 owner=user, post=obj
             ).first()
-            return bookmarks.id if bookmarks else None
+            return bookmark.id if bookmark else None
         return None
     
     def perform_create(self, serializer):
@@ -81,6 +81,6 @@ class PostSerializer(serializers.ModelSerializer):
             'comments_count',
             'category',
             'category_name'  
-            'bookmarks_id',
+            'bookmark_id',
             'bookmarks_count'     
         ]
