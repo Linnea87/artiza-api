@@ -57,6 +57,13 @@ class PostSerializer(serializers.ModelSerializer):
             ).first()
             return bookmark.id if bookmark else None
         return None
+
+    # def get_category_name(self, obj):
+    #     """
+    #     Retrieves the name of the category
+    #     associated with the post, if any.
+    #     """
+    #     return obj.category.name if obj.category else None
     
     def perform_create(self, serializer):
         # Post creation, associates owner with current user
@@ -80,7 +87,7 @@ class PostSerializer(serializers.ModelSerializer):
             'likes_count',
             'comments_count',
             'category',
-            'category_name'  
+            'category_name',  
             'bookmark_id',
-            'bookmarks_count'     
+            'bookmarks_count',     
         ]

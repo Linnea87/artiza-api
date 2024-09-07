@@ -1,6 +1,6 @@
 from django.db import IntegrityError
 from rest_framework import serializers
-from .models import Bookmark
+from bookmarks.models import Bookmark
 
 
 # based on Like serializers

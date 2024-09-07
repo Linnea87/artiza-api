@@ -1,11 +1,5 @@
 from rest_framework import generics, permissions
 from artiza_api.permissions import IsOwnerOrReadOnly
-from .models import Like
-from .serializers import LikeSerializer
-
-
-from rest_framework import generics, permissions
-from artiza_api.permissions import IsOwnerOrReadOnly
 from likes.models import Like
 from likes.serializers import LikeSerializer
 

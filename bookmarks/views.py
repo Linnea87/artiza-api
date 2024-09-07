@@ -1,7 +1,7 @@
 from rest_framework import generics, permissions
 from artiza_api.permissions import IsOwnerOrReadOnly
-from .models import Bookmark
-from .serializers import BookmarkSerializer
+from bookmarks.models import Bookmark
+from bookmarks.serializers import BookmarkSerializer
 
 
 # based off of Likes views
@@ -11,6 +11,7 @@ class BookmarkList(generics.ListCreateAPIView):
     bookmark a post if logged in.
     Permission already set globally in settings.py
     """
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = BookmarkSerializer
     queryset = Bookmark.objects.all()
 
