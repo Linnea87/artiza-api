@@ -62,8 +62,8 @@ REST_AUTH_SERIALIZERS = {
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = 'DEBUG' in os.environ
-DEBUG = True
+DEBUG = 'DEBUG' in os.environ
+# DEBUG = True
 
 
 ALLOWED_HOSTS = [
@@ -101,6 +101,7 @@ INSTALLED_APPS = [
     'likes',
     'followers',
     'categories',
+    'bookmarks',
 ]
 
 SITE_ID = 1
@@ -127,6 +128,7 @@ if 'CLIENT_ORIGIN' in os.environ:
 
 if 'CLIENT_ORIGIN_DEV' in os.environ:
     extracted_url = re.match(r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)
+   
     CORS_ALLOWED_ORIGIN_REGEXES = [r"^https://.*\.codeinstitute-ide\.net$",]
 
 
@@ -193,7 +195,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # prevents CSRF errors
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-linnea87-artizaapi-ng62e7lgk70.ws.codeinstitute-ide.net'
-    'https://artiza-e7a78d9d5179.herokuapp.com'
+    
 ]
 
 
