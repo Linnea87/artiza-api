@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import Profile
 from followers.models import Follower
 from categories.models import Category
+from bookmarks.models import Bookmark
 
 
 class ProfileSerializer(serializers.ModelSerializer):
@@ -11,6 +12,8 @@ class ProfileSerializer(serializers.ModelSerializer):
     posts_count = serializers.ReadOnlyField()
     followers_count = serializers.ReadOnlyField()
     following_count = serializers.ReadOnlyField()
+    bookmarks_count = serializers.ReadOnlyField()
+
 
     def validate_image(self, value):
         # 2MB
@@ -57,4 +60,5 @@ class ProfileSerializer(serializers.ModelSerializer):
             'posts_count',
             'followers_count',
             'following_count',
+            'bookmarks_count',
         ]

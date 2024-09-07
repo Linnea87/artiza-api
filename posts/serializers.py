@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import Post
 from likes.models import Like
 from categories.models import Category
+from bookmarks.models import Bookmark
 
 
 
@@ -17,6 +18,8 @@ class PostSerializer(serializers.ModelSerializer):
     likes_count = serializers.ReadOnlyField()
     comments_count = serializers.ReadOnlyField()
     category_name = serializers.ReadOnlyField(source='category.name')
+    bookmarks_id = serializers.SerializerMethodField()
+    bookmarks_count = serializers.ReadOnlyField()
 
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
@@ -44,9 +47,19 @@ class PostSerializer(serializers.ModelSerializer):
             return like.id if like else None
         return None
 
-    def perform_create(self, serializer):
-        # Post creation, associates owner with current user
-        serializer.save(owner=self.request.user)
+    # def perform_create(self, serializer):
+    #     # Post creation, associates owner with current user
+    #     serializer.save(owner=self.request.user)
+
+    def get_bookmarks_id(self, obj):
+        # check if user saved the post
+        user = self.context['request'].user
+        if user.is_authenticated:
+            bookmark = Bookmark.objects.filter(
+                owner=user, post=obj
+            ).first()
+            return bookmark.id if bookmark else None
+        return None
 
     class Meta:
         model = Post
@@ -65,5 +78,7 @@ class PostSerializer(serializers.ModelSerializer):
             'likes_count',
             'comments_count',
             'category',
-            'category_name'       
+            'category_name'  
+            'bookmarks_id',
+            'bookmarks_count'     
         ]
