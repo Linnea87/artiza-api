@@ -220,8 +220,8 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT = 'staticfiles'
 
-# import django_heroku
-# django_heroku.settings(locals())
+import django_heroku
+django_heroku.settings(locals())
 
 
 # Default primary key field type
