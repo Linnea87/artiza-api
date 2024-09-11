@@ -195,7 +195,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # prevents CSRF errors
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-linnea87-artizaapi-ng62e7lgk70.ws.codeinstitute-ide.net'
+    'https://8000-linnea87-artizaapi-ng62e7lgk70.ws.codeinstitute-ide.net/'
+    "https://artiza-e7a78d9d5179.herokuapp.com"
+    "https://3000-linnea87-artiza-57sp6p8tx8s.ws.codeinstitute-ide.net"
+
+    
     
 ]
 
