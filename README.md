@@ -14,6 +14,7 @@ ARTiza is a versatile app designed to meet the needs of artists of all levels, f
 ## Table of contents
 
 - [User stories](#user-stories)
+- [Database Scheme](#database-scheme)
 - [Testing](#testing)
     - [Validators](validators)
     - [Unit Testing](#unit-testing)
@@ -53,6 +54,12 @@ ARTiza is a versatile app designed to meet the needs of artists of all levels, f
 
 I have included User Stories links to the [GitHub Issues](https://github.com/Linnea87/artiza-api/issues) for ARTizas backend API, as well as the [KANBAN Board](https://github.com/users/Linnea87/projects/11).
 
+
+## Database Scheme
+
+I created my Database Schema using both numbers and figma. Here I report how all models have a connection to each other
+
+![Database img](readmedoc/database.png)
 
 ## Testing
 
@@ -117,10 +124,9 @@ Each title was tested manually and marked with an X for yes if it works, and no 
 |   likes/<int:pk>/ is accessible if not logged in as read only     |   X    |       |
 |   I can see likes when not logged in                              |   X    |       |
 |   If I am signed in, I can add a like to a post                   |   X    |       |
-|   If I am signed in, I can add a like to a post                   |   X    |       |
 |   Likes can not be deleted if not logged in as the owner          |   X    |       |
 |   Likes can be deleted if logged in as its owner                  |   X    |       |
-|   I can not like the same thing twice                             |   X    |       |
+|   I can not like the same post twice                             |   X    |       |
 
 
 |   Comments                                                           |   Yes  |   No  |
@@ -142,6 +148,9 @@ Each title was tested manually and marked with an X for yes if it works, and no 
 |   Followers/<int:pk>/ is accessible if not logged in as read only     |   X    |       |
 |   If I am signed in,I can follow another users profile                |   X    |       |
 |   If I am signed in, I can unfollow a profile I already follow        |   X    |       |
+|   The posts to the profiles that i follow are displayed in the feed page       |   X   |       
+
+
 
 
 |   Categories                                                           |   Yes  |   No  |
@@ -151,6 +160,17 @@ Each title was tested manually and marked with an X for yes if it works, and no 
 |   If I am a authenticated user I can    update the categories          |   X    |       |
 |   If I am a authenticated user I can    create categories              |   X    |       |
 |   If I am a authenticated user I can    Delete categories              |   X    |       |
+
+
+| Bookmarks                                                     | Yes | No |
+|---------------------------------------------------------------|-----|----|
+| bookmarks/ is accessible if not logged in as read only        | X   |    |
+| bookmarks/int:pk/ is accessible if not logged in as read only | X   |    |
+| I can see bookmarkes when not logged in                       | X   |    |
+| If I am signed in, I can add a bookmark to a post             | X   |    |
+| If I am signed in, I can delete my own bookmark to a post     | X   |    |
+| bookmarks can not be deleted if not logged in as the owner    | X   |    |
+| I can not bookmark the same post twice                        | X   |    |
 
 
 ## Project Setup
