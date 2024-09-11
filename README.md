@@ -6,7 +6,7 @@ This is my RESTful API, developed for my frontend React project, ARTiza. This is
 
 The API is deployed here: [ARTiza API](https://artiza-api-fbf88e8a2da5.herokuapp.com)
 
-And the deployed front-end is here:
+And the deployed front-end is here: [ARTiza Frontend](https://artiza-e7a78d9d5179.herokuapp.com/)
 
 ARTiza is a versatile app designed to meet the needs of artists of all levels, from beginners to hobbyists and professionals. In the app, users can upload their artwork, receive feedback through likes and comments, and build a creative community by following other artists. ARTiza offers a platform where both inspiration and creativity can flow, while artists can showcase their work and network with like-minded people in the art world.
 
