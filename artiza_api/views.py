@@ -5,13 +5,14 @@ from .settings import (
     JWT_AUTH_SAMESITE, JWT_AUTH_SECURE,
 )
 
-
+# Code provided in DRF-API walkthrough.
 @api_view()
 def root_route(request):
     return Response({
         "message": "Welcome to my ARTiza API!"
     })
 
+# Code provided in DRF-API walkthrough.
 # dj-rest-auth logout view fix
 @api_view(['POST'])
 def logout_route(request):

@@ -4,7 +4,7 @@ from artiza_api.permissions import IsOwnerOrReadOnly
 from .models import Comment
 from .serializers import CommentSerializer, CommentDetailSerializer
 
-
+# Class provided by DRF-API walkthrough.
 class CommentList(generics.ListCreateAPIView):
     """
     List comments or create a comment if logged in.

@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-
+# Class provided by DRF-API walkthrough. 
 class Follower(models.Model):
     """
     Follower model, related to 'owner' and 'followed'.

@@ -6,8 +6,7 @@ from .models import Profile
 from .serializers import ProfileSerializer
 
 
-
-
+# Class provided by DRF-API walkthrough. Customized.
 class ProfileList(generics.ListAPIView):
     """
     List all profiles.

@@ -3,7 +3,7 @@ from rest_framework import serializers
 from bookmarks.models import Bookmark
 
 
-# based on Like serializers
+# based on Like serializers provided by DRF-API walkthrough.
 class BookmarkSerializer(serializers.ModelSerializer):
     """
     Serializer for the Bookmark model.

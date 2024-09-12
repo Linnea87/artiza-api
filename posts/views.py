@@ -8,7 +8,7 @@ from bookmarks.models import Bookmark
 from .serializers import PostSerializer
 
 
-
+# Class provided by DRF-API walkthrough.
 class PostList(generics.ListCreateAPIView):
     """
     List posts or create a post if logged in

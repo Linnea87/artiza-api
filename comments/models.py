@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from posts.models import Post
 
-
+# Class provided by DRF-API walkthrough. Customized.
 class Comment(models.Model):
     """
     Comment model, related to User and Post

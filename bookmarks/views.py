@@ -4,7 +4,7 @@ from bookmarks.models import Bookmark
 from bookmarks.serializers import BookmarkSerializer
 
 
-# based off of Likes views
+# based off of Likes views provided by DRF-API walkthrough.
 class BookmarkList(generics.ListCreateAPIView):
     """
     View all bookmarked posts.

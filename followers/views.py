@@ -3,7 +3,7 @@ from artiza_api.permissions import IsOwnerOrReadOnly
 from .models import Follower
 from .serializers import FollowerSerializer
 
-
+# Class provided by DRF-API walkthrough.
 class FollowerList(generics.ListCreateAPIView):
     """
     List all followers, i.e. all instances of a user

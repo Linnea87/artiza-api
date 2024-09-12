@@ -4,7 +4,7 @@ from followers.models import Follower
 from categories.models import Category
 from bookmarks.models import Bookmark
 
-
+# Class provided by DRF-API walkthrough.
 class ProfileSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()

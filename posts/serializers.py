@@ -6,7 +6,7 @@ from bookmarks.models import Bookmark
 
 
 
-
+# Class provided by DRF-API walkthrough. Customized.
 class PostSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
@@ -58,13 +58,6 @@ class PostSerializer(serializers.ModelSerializer):
             return bookmark.id if bookmark else None
         return None
 
-    # def get_category_name(self, obj):
-    #     """
-    #     Retrieves the name of the category
-    #     associated with the post, if any.
-    #     """
-    #     return obj.category.name if obj.category else None
-    
     def perform_create(self, serializer):
         # Post creation, associates owner with current user
         serializer.save(owner=self.request.user)

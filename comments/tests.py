@@ -4,7 +4,7 @@ from posts.models import Post
 from rest_framework.test import APITestCase
 from rest_framework import status
 
-
+# Class provided by DRF-API walkthrough. Customized.
 class CommentListViewTests(APITestCase):
     """
     Tests for the Comment list view.

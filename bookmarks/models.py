@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from posts.models import Post
 
 
-# based on Like model
+# based on Like model provided by DRF-API walkthrough. 
 class Bookmark(models.Model):
     # Bookmark model, related to User, Post.
     owner = models.ForeignKey(

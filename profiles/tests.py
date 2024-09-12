@@ -3,7 +3,7 @@ from rest_framework.test import APITestCase
 from .models import Profile
 from rest_framework import status
 
-
+# Class provided by DRF-API walkthrough.
 class ProfileListViewTests(APITestCase):
     """
     Tests for the Profile list view.

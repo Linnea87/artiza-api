@@ -2,7 +2,7 @@ from django.contrib.humanize.templatetags.humanize import naturaltime
 from rest_framework import serializers
 from .models import Comment
 
-
+# Class provided by DRF-API walkthrough. Customized.
 class CommentSerializer(serializers.ModelSerializer):
     """
     Serializer for the Comment model
