@@ -823,11 +823,13 @@ I used a PostgreSQL database for this project, at [Elephant SQL](https://www.ele
 
 ### Sources
 
-* I have used The Code Institute Advanced Front-end specialisation Django REST Framework guide, as a basis to create and deploy this API. I also used the Moments walkthrough project as an inspiration and expanded my project with new custom models and functionality;
+* The Code Institute Advanced Front-end specialisation Django REST Framework guide was used as a basis to create and deploy this API. Inspiration was taken from the Moments walkthrough project and expanded on with new custom models and functionality.
 
-    * categories app
+* Modifications have been made to the 'Comments' app model, and an additional 'categories' apps along with models, serializers & views have been created by me.
 
-* As always i have used [Stack Overflow](https://stackoverflow.com) for trouble shooting
+* [Stack Overflow](https://stackoverflow.com) and [Slack](https://slack.com/help) for trouble shooting.
+
+* [ChatGPT](https://chatgpt.com) for checking the readme
 
 ### Media
 
