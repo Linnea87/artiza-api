@@ -22,6 +22,7 @@ class PostList(generics.ListCreateAPIView):
         bookmarks_count=Count('bookmarks', distinct=True)
     ).order_by('-created_at')
 
+
     filter_backends = [
         filters.OrderingFilter,
         filters.SearchFilter,
@@ -47,6 +48,7 @@ class PostList(generics.ListCreateAPIView):
         'bookmarks_count',
         'bookmarks_created_at',
     ]
+
 
     def perform_create(self, serializer):
         # Post creation, associates owner with current user

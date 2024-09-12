@@ -3,6 +3,7 @@ from rest_framework.test import APITestCase
 from .models import Profile
 from rest_framework import status
 
+
 # Class provided by DRF-API walkthrough.
 class ProfileListViewTests(APITestCase):
     """
@@ -30,9 +31,11 @@ class ProfileDetailViewTests(APITestCase):
             username='brian', password='pass'
             )
 
+
     def test_can_retrieve_profile(self):
         response = self.client.get(f'/profiles/{self.adam_profile.id}/')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+
 
     def test_owner_can_update_profile(self):
         self.client.login(username='adam', password='pass')
@@ -44,12 +47,14 @@ class ProfileDetailViewTests(APITestCase):
         self.adam.refresh_from_db()
         self.assertEqual(self.adam.profile.name, 'mada')
 
+
     def test_logged_out_user_cannot_update_profile(self):
         response = self.client.put(
             f'/profiles/{self.adam_profile.id}/',
             {'name': 'mada'}
             )
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
 
     def test_logged_in_user_cannot_update_other_users_profile(self):
         self.client.login(username='brian', password='pass')

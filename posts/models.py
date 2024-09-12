@@ -15,6 +15,7 @@ class Post(models.Model):
         upload_to='images/', default='../default_post_ml2gkn', blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE) 
 
+
     class Meta:
         """
         Order posts by date created.

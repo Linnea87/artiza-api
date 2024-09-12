@@ -5,7 +5,6 @@ from categories.models import Category
 from bookmarks.models import Bookmark
 
 
-
 # Class provided by DRF-API walkthrough. Customized.
 class PostSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
@@ -21,6 +20,7 @@ class PostSerializer(serializers.ModelSerializer):
     bookmark_id = serializers.SerializerMethodField()
     bookmarks_count = serializers.ReadOnlyField()
 
+
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
             raise serializers.ValidationError('Image size larger than 2MB!')
@@ -34,9 +34,11 @@ class PostSerializer(serializers.ModelSerializer):
             )
         return value
 
+
     def get_is_owner(self, obj):
         request = self.context['request']
         return request.user == obj.owner
+
 
     def get_like_id(self, obj):
         user = self.context['request'].user
@@ -57,6 +59,7 @@ class PostSerializer(serializers.ModelSerializer):
             ).first()
             return bookmark.id if bookmark else None
         return None
+
 
     def perform_create(self, serializer):
         # Post creation, associates owner with current user
