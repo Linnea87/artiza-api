@@ -68,7 +68,6 @@ DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = [
     os.environ.get('ALLOWED_HOST'),
-    '8000-linnea87-artizaapi-ng62e7lgk70.ws.codeinstitute-ide.net', 
     '127.0.0.1', 
     'localhost'
 ]
@@ -195,11 +194,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # prevents CSRF errors
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-linnea87-artizaapi-ng62e7lgk70.ws.codeinstitute-ide.net/'
-    "https://artiza-e7a78d9d5179.herokuapp.com"
-
-    
-    
+    'https://*.onrender.com',
 ]
 
 
